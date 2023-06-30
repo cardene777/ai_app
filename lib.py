@@ -12,7 +12,7 @@ def get_audio_file(url: str):
         'outtmpl': './audio.%(ext)s',
         'format': 'bestaudio/best',
         'postprocessors': [{
-            # 'key': 'FFmpegExtractAudio',
+            'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
             'preferredquality': '192'
         }],
