@@ -12,6 +12,8 @@ openai = "^0.27.8"
 llama-index = "^0.6.35"
 python-dotenv = "^1.0.0"
 streamlit = "^1.24.0"
+ffprobe = "^0.5"
+ffmpeg = "^1.4"
 
 
 [build-system]
