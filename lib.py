@@ -8,17 +8,20 @@ STORAGE_PATH = "./storage"
 
 def get_audio_file(url: str):
 
-    option = {
+    ydl_opts = {
         'outtmpl': './audio.%(ext)s',
         'format': 'bestaudio/best',
         'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
+            # 'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
             'preferredquality': '192'
-        }]
+        }],
+        '': r"/usr/bin/ffmpeg"
     }
 
-    ydl = YoutubeDL(option)
+    ydl_opts['ffmpeg_location'] = r"/usr/bin/ffmpeg"
+
+    ydl = YoutubeDL(ydl_opts)
     ydl.download([url])
 
 
