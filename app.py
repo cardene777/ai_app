@@ -9,7 +9,35 @@ AUDIO_FILE_PATH = "./audio.mp3"
 STORAGE_PATH = "./storage"
 
 
+def find_ffmpeg_directory():
+    current_dir = os.getcwd()  # 現在のディレクトリを取得
+
+    while True:
+        if os.path.isdir(os.path.join(current_dir, 'ffmpeg')):
+            return os.path.join(current_dir, 'ffmpeg')  # ffmpegディレクトリが見つかった場合、パスを返す
+
+        # 親ディレクトリに移動
+        current_dir = os.path.dirname(current_dir)
+
+        # ルートディレクトリに到達した場合、ループを終了
+        if current_dir == os.path.dirname(current_dir):
+            break
+
+    return None  # ffmpegディレクトリが見つからなかった場合、Noneを返す
+
+
 def main():
+    import os
+
+    # ディレクトリの検索を実行
+    ffmpeg_dir = find_ffmpeg_directory()
+
+    if ffmpeg_dir:
+        print(f"ffmpegディレクトリが見つかりました: {ffmpeg_dir}")
+    else:
+        print("ffmpegディレクトリが見つかりませんでした。")
+    st.write(f"ffmpeg_dir: {ffmpeg_dir}")
+
     summary_prompt = ''
     audio_text = ''
     api_flag = False
