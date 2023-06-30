@@ -11,15 +11,13 @@ def get_audio_file(url: str):
     ydl_opts = {
         'outtmpl': './audio.%(ext)s',
         'format': 'bestaudio/best',
+        'ffmpeg_location': r"/usr/bin/ffmpeg",
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
             'preferredquality': '192'
         }],
-        '': r"/usr/bin/ffmpeg"
     }
-
-    ydl_opts['ffmpeg_location'] = r"/usr/bin/ffmpeg"
 
     ydl = YoutubeDL(ydl_opts)
     ydl.download([url])
