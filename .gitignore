@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+.vscode/
+storage/
+audio.*
+
+.DS_Store
+
 # C extensions
 *.so
 
