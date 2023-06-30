@@ -36,17 +36,16 @@ def main():
     if audio_url:
         st.success("Audio URL is set.", icon="✅")
         if st.button("Get Audio File", key="get_audio_file"):
-            # https://voicy.jp/channel/1819/558826
             with st.spinner(text="Get Audio Data..."):
                 lib.get_audio_file(audio_url)
 
     summary_prompt = st.selectbox(
         label="Choice Prompt (required)",
         options=[
-            "テキストの内容を300字程度で要約してください。",
+            "テキストの内容を300文字程度で要約してください。",
             "テキストの内容を5~10の項目に分けて要約してください",
-            "テキストの内容を500字程度で要約してください。",
-            "テキストの内容を1000字程度で要約してください。",
+            "テキストの内容を500文字程度にまとめてください。",
+            "テキストの内容を1000文字程度にまとめてください。",
         ]
     )
 

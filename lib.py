@@ -11,7 +11,6 @@ def get_audio_file(url: str):
     ydl_opts = {
         'outtmpl': './audio.%(ext)s',
         'format': 'bestaudio/best',
-        'ffmpeg_location': "/usr/bin/ffmpeg",
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
