@@ -590,28 +590,6 @@ files = [
 ]
 
 [[package]]
-name = "ffmpeg"
-version = "1.4"
-description = "ffmpeg python package url [https://github.com/jiashaokun/ffmpeg]"
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "ffmpeg-1.4.tar.gz", hash = "sha256:6931692c890ff21d39938433c2189747815dca0c60ddc7f9bb97f199dba0b5b9"},
-]
-
-[[package]]
-name = "ffprobe"
-version = "0.5"
-description = "Wrapper around ffprobe command to extract metadata from media files"
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "ffprobe-0.5.zip", hash = "sha256:f7dc048df62c6ccc1c602c865a7f0976b2679200fd07ebdc34ce51e9a8205b76"},
-]
-
-[[package]]
 name = "frozenlist"
 version = "1.3.3"
 description = "A list-like structure which implements collections.abc.MutableSequence"
@@ -2625,4 +2603,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "48c4db8075ccab2d84045f9b76caccde9635f1f284bae5718a73a690e39c691d"
+content-hash = "4d0fb4314748257da97d7a80c37c2da4c4206892f53d349000860ec7110544b5"
