@@ -4,7 +4,7 @@ import webbrowser
 import os
 import shutil
 
-import lib
+from audio_summary import lib
 
 AUDIO_FILE_PATH = "./audio.mp3"
 STORAGE_PATH = "./storage"
