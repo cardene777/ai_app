@@ -1,5 +1,6 @@
 import streamlit as st
 import openai
+import webbrowser
 import os
 import shutil
 
@@ -57,7 +58,15 @@ def main():
         st.audio(audio_bytes, format='audio/mp3')
         st.download_button(label="Download Audio File", data=audio_bytes, file_name="audio.mp3", mime="audio/mp3")
 
-        if st.button("Get Summary Text", key="get_summary_text"):
+        col1, col2 = st.beta_columns(2)
+
+        with col1:
+            summary_btn = st.button("Get Summary Text", key="get_summary_text")
+
+        with col2:
+            check_open_chatgpt_btn = st.button("Open ChatGPT Button", key="check_open_chatgpt")
+
+        if summary_btn:
             with st.spinner(text="Convert Audio Text..."):
                 audio_text = lib.get_audio_text(AUDIO_FILE_PATH)
             if audio_text:
@@ -69,6 +78,13 @@ def main():
                 if summary_text:
                     st.success("Get Summary Text.", icon="✅")
                     st.write(summary_text)
+
+        if check_open_chatgpt_btn:
+            st.info("以下のコードをコピーして、以下のボタンを押したのち、開いたChatGPTページ内の入力欄に貼り付けてください。")
+            st.write(f"{summary_prompt}\n{audio_text}")
+            if st.button("Open ChatGPT", key="open_chatgpt"):
+                search_url = 'https://chat.openai.com/'
+                webbrowser.open(search_url)
 
 
 if __name__ == "__main__":
