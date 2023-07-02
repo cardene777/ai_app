@@ -12,7 +12,6 @@ openai = "^0.27.8"
 llama-index = "^0.6.35"
 python-dotenv = "^1.0.0"
 streamlit = "^1.24.0"
-pyautogui = "^0.9.54"
 
 
 [build-system]
