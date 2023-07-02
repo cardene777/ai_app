@@ -4,7 +4,7 @@ import webbrowser
 import os
 import shutil
 
-from audio_summary import lib
+import lib
 
 AUDIO_FILE_PATH = "./audio.mp3"
 STORAGE_PATH = "./storage"
@@ -58,11 +58,6 @@ def main():
         st.audio(audio_bytes, format='audio/mp3')
         st.download_button(label="Download Audio File", data=audio_bytes, file_name="audio.mp3", mime="audio/mp3")
 
-        with st.spinner(text="Convert Audio Text..."):
-            audio_text = lib.get_audio_text(AUDIO_FILE_PATH)
-        if audio_text:
-            st.success("Convert Audio Text.", icon="✅")
-
         col1, col2 = st.columns(2)
 
         with col1:
@@ -71,14 +66,13 @@ def main():
 
         with col2:
             st.write("Open ChatGPT")
-            st.info("以下のコードをコピーして、以下のボタンを押したのち、開いたChatGPTページ内の入力欄に貼り付けてください。")
-            st.write(f"{summary_prompt}\n{audio_text}")
-            if st.button("Open ChatGPT", key="open_chatgpt"):
-                search_url = 'https://chat.openai.com/'
-                webbrowser.open(search_url)
+            check_open_chatgpt_btn = st.button("Open ChatGPT Button", key="check_open_chatgpt")
 
         if summary_btn:
+            with st.spinner(text="Convert Audio Text..."):
+                audio_text = lib.get_audio_text(AUDIO_FILE_PATH)
             if audio_text:
+                st.success("Convert Audio Text.", icon="✅")
                 with st.expander("Audio Text"):
                     st.write(audio_text)
                 with st.spinner(text="Get Summary Text..."):
@@ -86,6 +80,18 @@ def main():
                 if summary_text:
                     st.success("Get Summary Text.", icon="✅")
                     st.write(summary_text)
+
+        if check_open_chatgpt_btn:
+            with st.spinner(text="Convert Audio Text..."):
+                audio_text = lib.get_audio_text(AUDIO_FILE_PATH)
+            if audio_text:
+                st.success("Convert Audio Text.", icon="✅")
+                st.info("以下のコードをコピーして、以下のボタンを押したのち、開いたChatGPTページ内の入力欄に貼り付けてください。")
+                st.write(f"{summary_prompt}\n{audio_text}")
+            if st.button("Open ChatGPT", key="open_chatgpt"):
+                search_url = 'https://chat.openai.com/'
+                with st.spinner(text="Open ChatGPT..."):
+                    webbrowser.open(search_url)
 
 
 if __name__ == "__main__":

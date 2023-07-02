@@ -1,4 +1,4 @@
-from yt_dlp import YoutubeDL
+from download_audio import YoutubeDL
 import openai
 import os
 import time
