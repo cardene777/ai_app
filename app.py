@@ -15,6 +15,6 @@ if selection == 'Home':
     st.write('Welcome to the home page!')
     url = "https://metamask.app.link/dapp/oaschoice.com"
     if st.button('Open Page'):
-        webbrowser.open_new_tab(url)
+        webbrowser.open(url)
 elif selection == 'Audio Summary':
     app.main()
