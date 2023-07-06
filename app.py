@@ -13,8 +13,7 @@ selection = st.sidebar.selectbox('Select Option', options)
 if selection == 'Home':
     st.title('Home Page')
     st.write('Welcome to the home page!')
-    url = "https://metamask.app.link/dapp/oaschoice.com"
-    if st.button('Open Page'):
-        webbrowser.open(url)
+    if st.button('Open Page', key="open_page"):
+        webbrowser.open("https://metamask.app.link/dapp/oaschoice.com")
 elif selection == 'Audio Summary':
     app.main()
