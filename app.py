@@ -1,4 +1,5 @@
 import streamlit as st
+import webbrowser
 
 from audio_summary import app
 
@@ -12,5 +13,8 @@ selection = st.sidebar.selectbox('Select Option', options)
 if selection == 'Home':
     st.title('Home Page')
     st.write('Welcome to the home page!')
+    url = "https://metamask.app.link/dapp/oaschoice.com"
+    if st.button('Open Page'):
+        webbrowser.open_new_tab(url)
 elif selection == 'Audio Summary':
     app.main()
